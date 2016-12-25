@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>XJet Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
+    <link rel="stylesheet" href="css/bootstrap-table.min.css" media="screen">
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+</head>
+<body>
+<!--Start of Top Bar-->
+<div class="navbar navbar-default navbar-fixed-top noselect">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img src="images/xjet-logo.svg" class="logoimage"
+                 onclick="infoDialog()">
+            <div class="appname">Builder Station  <!-- Split Connection button -->
+                <div class="btn-group btn-group-xs connection">
+                    <button type="button" class="btn btn-primary btn-xs ">Server : Appleton - Connected</button>
+                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Disconnect Server</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="javascript:connectServer()">Connect Different Server...</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="topright pull-right">
+                <span id="username"> Alfred E. Newman</span>
+                <button class="btn btn-sm btn-default" onclick="login()"><i class="fa fa-sign-out"></i> Log
+                    Out
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Start of Main Section-->
+<div class="container-fluid noselect">
+    <div>
+        <!--Main Tabs-->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-1" role="tab" data-toggle="tab">Print Queue</a></li>
+            <li><a href="#tab-2" role="tab" data-toggle="tab">All Job History</a></li>
+            <li><a href="#tab-3" role="tab" data-toggle="tab">Manage Printers</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="tab-1">
+                <!--Printer Queue Tab-->
+                <div class="printerbox" id="printer1">
+                    <div class="lpane">
+                        <div class="printerpic"><img src="images/printer4.png"></div>
+                        <div class="printername"><i class="fa fa fa-circle status1 blink"></i> Calamari 17</div>
+                        <!-- Split Connection button -->
+                        <div class="btn-group btn-group-xs connection">
+                            <button type="button" class="btn btn-primary btn-xs ">Connected</button>
+                            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Disconnect Printer</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="col-sm-6 text-center">
+                                <div class="progress progress-bar-vertical support">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="40"
+                                         aria-valuemin="0" aria-valuemax="100" style="height:40%">
+                                        40%
+                                    </div>
+                                </div>
+                                <div class="mediatitle">Support</div>
+                            </div>
+
+                            <div class="col-sm-6 text-center">
+                                <div class="progress progress-bar-vertical metal">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                         aria-valuemin="0" aria-valuemax="100" style="height:70%">
+                                        70%
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mediatitle">Metal</div>
+                        </div>
+                    </div>
+                    <div class="rpane">
+                        <div class="printertitle">Currently Printing</div>
+                        <table class="nowprinting">
+                            <thead>
+                            <tr>
+                                <th>Testing Job 316 Redo</th>
+                                <th>Stephan Black</th>
+                                <th>689 gr.</th>
+                                <th>1350 gr.</th>
+                                <th>12 Apr 2016 10:20</th>
+                                <th>12 Apr 2016 10:20</th>
+                                <th>8966/17855</th>
+                                <th>Printing</th>
+                                <th>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="37"
+                                             aria-valuemin="0" aria-valuemax="100" style="width:37%">
+                                            37%
+                                        </div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <button class="btn btn-sm btn-block btn-info current-pause"><i
+                                            class="fa fa-pause"></i>
+                                    </button>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Job Name</td>
+                                <td>Owner</td>
+                                <td>Est. Model Consumption</td>
+                                <td>Est. Support Consumption</td>
+                                <td>Submitted Time</td>
+                                <td>Est. Completion Time</td>
+                                <td>Slice</td>
+                                <td>Status</td>
+                                <td>Progress</td>
+                                <td>
+                                    <button class="btn btn-sm btn-block btn-danger current-abort"><i
+                                            class="fa fa-close"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="queuetitle">
+                            <a class="queuetoggle" href="javascript:"><i class="fa fa-chevron-down"></i><i
+                                    class="fa fa-chevron-right" style="display:none;"></i> Jobs in Queue (3)</a>
+                        </div>
+                        <!-- Start queue-->
+                        <div class="queue">
+                            <table class="table table-striped" data-toggle="table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Owner</th>
+                                    <th>Submitted Time</th>
+                                    <th>Est. Model Consumption</th>
+                                    <th>Est. Support Consumption</th>
+                                    <th>Total Slices</th>
+                                    <th>Est. Printing Time</th>
+                                    <th>Options</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr data-order="1">
+                                    <td><input type="hidden" id="job-111"><span class="mover"> 1 </span></td>
+                                    <td>Important job 34</td>
+
+                                    <td>Matt Calamari</td>
+                                    <td>12-Apr-2016 07:17</td>
+                                    <td>875gr</td>
+                                    <td>612gr</td>
+                                    <td>18997</td>
+                                    <td>36h 6min</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-xs"><i
+                                                class="fa fa fa-trash queue-remove"></i>
+                                        </button>
+                                    </td>
+
+                                </tr>
+                                <tr data-order="2">
+                                    <td><input type="hidden" id="job-112"><span class="mover"> 2 </span></td>
+                                    <td>Thinking of Darwin</td>
+                                    <td>Josef Snurkle</td>
+                                    <td>14-May-2016 09:20</td>
+                                    <td>960gr</td>
+                                    <td>1234gr</td>
+                                    <td>243330</td>
+                                    <td>34h 2min</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-xs"><i
+                                                class="fa fa fa-trash queue-remove"></i>
+                                        </button>
+                                    </td>
+
+                                </tr>
+                                <tr data-order="3">
+                                    <td><input type="hidden" id="job-113"><span class="mover"> 3 </span></td>
+                                    <td>Job#45 Redo 12</td>
+                                    <td>Jo Bingles</td>
+                                    <td>10-May-2016 12:17</td>
+                                    <td>888gr</td>
+                                    <td>666gr</td>
+                                    <td>18009</td>
+                                    <td>35h 16min</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-xs"><i
+                                                class="fa fa fa-trash queue-remove"></i>
+                                        </button>
+                                    </td>
+
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--Job History Start-->
+                        <div class="jhistorytitle">
+                            <a class="queuetoggle" href="javascript:"><i class="fa fa-chevron-down"
+                                                                         style="display:none;"></i><i
+                                    class="fa fa-chevron-right"></i> Job History (42)</a>
+                        </div>
+                        <div class="jhistory">
+                            <table class="table table-striped" data-toggle="table">
+                                <thead>
+                                <tr>
+                                    <th data-field="order" data-sortable="true">#</th>
+                                    <th data-field="name" data-sortable="true">Name</th>
+                                    <th data-field="owner" data-sortable="true">Owner</th>
+                                    <th data-field="start" data-sortable="true">Start Time</th>
+                                    <th>Model Consumption</th>
+                                    <th>Support Consumption</th>
+                                    <th>Total Slices</th>
+                                    <th>Printing Time</th>
+                                    <th>Completion Time</th>
+                                    <th>Options</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Really Really long job</td>
+                                    <td>Matt Calamari</td>
+                                    <td>12-Apr-2016 07:17</td>
+                                    <td>875gr</td>
+                                    <td>612gr</td>
+                                    <td>18997</td>
+                                    <td>36h 6min</td>
+                                    <td>12-Apr-2016 10:20</td>
+                                    <td>
+                                        <button class="btn btn-info btn-xs" onclick="reSend();"><i
+                                                class="fa fa fa-recycle queue-resend"></i>
+                                        </button>
+                                        <button class="btn btn-warning btn-xs"><i
+                                                class="fa fa fa-trash queue-remove"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Boring to hell</td>
+                                    <td>Stewart Little</td>
+                                    <td>12-Apr-2016 07:17</td>
+                                    <td>875gr</td>
+                                    <td>612gr</td>
+                                    <td>18997</td>
+                                    <td>36h 6min</td>
+                                    <td>12-Apr-2016 10:20</td>
+                                    <td>
+                                        <button class="btn btn-info btn-xs" onclick="reSend();"><i
+                                                class="fa fa fa-recycle queue-resend"></i>
+                                        </button>
+                                        <button class="btn btn-warning btn-xs"><i
+                                                class="fa fa fa-trash queue-remove"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Best Job #44</td>
+                                    <td>Fredrick Hansel</td>
+                                    <td>12-Apr-2016 07:17</td>
+                                    <td>875gr</td>
+                                    <td>612gr</td>
+                                    <td>18997</td>
+                                    <td>36h 6min</td>
+                                    <td>12-Apr-2016 10:20</td>
+                                    <td>
+                                        <button class="btn btn-info btn-xs" onclick="reSend();"><i
+                                                class="fa fa fa-recycle queue-resend"></i>
+                                        </button>
+                                        <button class="btn btn-warning btn-xs"><i
+                                                class="fa fa fa-trash queue-remove"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Calamari's Creation</td>
+                                    <td>Bing Crosby</td>
+                                    <td>12-Apr-2016 07:17</td>
+                                    <td>875gr</td>
+                                    <td>612gr</td>
+                                    <td>18997</td>
+                                    <td>36h 6min</td>
+                                    <td>12-Apr-2016 10:20</td>
+                                    <td>
+                                        <button class="btn btn-info btn-xs" onclick="reSend();"><i
+                                                class="fa fa fa-recycle queue-resend"></i>
+                                        </button>
+                                        <button class="btn btn-warning btn-xs"><i
+                                                class="fa fa fa-trash queue-remove"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--End Printer #1-->
+                <!--End Printer Queue Tab-->
+            </div>
+            <!--Start All Job History-->
+            <div role="tabpanel" class="tab-pane " id="tab-2">
+                <div class="filter">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <div class="input-group" style="width:300px">
+                                <input type="text" class="form-control input-sm" id="box" placeholder="Find Jobs">
+                                <span class="fa fa-close form-control-feedback clearfield"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="jhistory allhistory">
+                    <table class="table table-striped" data-toggle="table">
+                        <thead>
+                        <tr>
+                            <th data-field="order" data-sortable="true">#</th>
+                            <th data-field="name" data-sortable="true">Name</th>
+                            <th data-field="owner" data-sortable="true">Owner</th>
+                            <th data-field="printer" data-sortable="true">Printer</th>
+                            <th data-field="start" data-sortable="true">Start Time</th>
+                            <th>Model Consump.</th>
+                            <th>Support Consump.</th>
+                            <th>Slices</th>
+                            <th>Printing Time</th>
+                            <th>Completion Time</th>
+                            <th>Options</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Really Really long job</td>
+                            <td>Matt Calamari</td>
+                            <td>Printer #1</td>
+                            <td>12-Apr-2016 07:17</td>
+                            <td>875gr</td>
+                            <td>612gr</td>
+                            <td>18997</td>
+                            <td>36h 6min</td>
+                            <td>12-Apr-2016 10:20</td>
+                            <td>
+                                <button class="btn btn-info btn-xs" onclick="reSend();"><i
+                                        class="fa fa fa-recycle queue-resend"></i>
+                                </button>
+                                <button class="btn btn-warning btn-xs"><i class="fa fa fa-trash queue-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Boring to hell</td>
+                            <td>Stewart Little</td>
+                            <td>Printer #2</td>
+                            <td>12-Apr-2016 07:17</td>
+                            <td>875gr</td>
+                            <td>612gr</td>
+                            <td>18997</td>
+                            <td>36h 6min</td>
+                            <td>12-Apr-2016 10:20</td>
+                            <td>
+                                <button class="btn btn-info btn-xs" onclick="reSend();"><i
+                                        class="fa fa fa-recycle queue-resend"></i>
+                                </button>
+                                <button class="btn btn-warning btn-xs"><i class="fa fa fa-trash queue-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Best Job #44</td>
+                            <td>Fredrick Hansel</td>
+                            <td>Printer #1</td>
+                            <td>12-Apr-2016 07:17</td>
+                            <td>875gr</td>
+                            <td>612gr</td>
+                            <td>18997</td>
+                            <td>36h 6min</td>
+                            <td>12-Apr-2016 10:20</td>
+                            <td>
+                                <button class="btn btn-info btn-xs" onclick="reSend();"><i
+                                        class="fa fa fa-recycle queue-resend"></i>
+                                </button>
+                                <button class="btn btn-warning btn-xs"><i class="fa fa fa-trash queue-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Calamari's Creation</td>
+                            <td>Bing Crosby</td>
+                            <td>Printer #1</td>
+                            <td>12-Apr-2016 07:17</td>
+                            <td>875gr</td>
+                            <td>612gr</td>
+                            <td>18997</td>
+                            <td>36h 6min</td>
+                            <td>12-Apr-2016 10:20</td>
+                            <td>
+                                <button class="btn btn-info btn-xs" onclick="reSend();"><i
+                                        class="fa fa fa-recycle queue-resend"></i>
+                                </button>
+                                <button class="btn btn-warning btn-xs"><i class="fa fa fa-trash queue-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--Manage Printers-->
+            <div role="tabpanel" class="tab-pane" id="tab-3">
+                <div class="printerbin">
+                    <div class="printer">
+                        <div class="printerpic"><img src="images/printer4.png"></div>
+                        <div class="printername"><i class="fa fa fa-circle status2"></i> Hitchcock#44</div>
+                        <table class="printerdata table table-bordered">
+                            <tr>
+                                <td>State:</td>
+                                <td>Online</td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td>PreAlpha12</td>
+                            </tr>
+                            <tr>
+                                <td>Connection:</td>
+                                <td>Disconnected</td>
+                            </tr>
+                            <tr>
+                                <td>Alert:</td>
+                                <td>No Alert</td>
+                            </tr>
+                            <tr>
+                                <td>IP:</td>
+                                <td>127.0.0.1</td>
+                            </tr>
+                            <tr>
+                                <td>Port:</td>
+                                <td>456789</td>
+                            </tr>
+                            <tr>
+                                <td>Description:</td>
+                                <td>Left Corner</td>
+                            </tr>
+                            <tr>
+                                <td>Build Size:</td>
+                                <td>3365</td>
+                            </tr>
+                            <tr>
+                                <td>Ink Types:</td>
+                                <td>Stainless Steel 1078</td>
+                            </tr>
+                            <tr>
+                                <td>Media Levels:</td>
+                                <td>
+                                    <div>
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical support">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="40"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:40%">
+                                                    40%
+                                                </div>
+                                            </div>
+                                            <div class="mediatitle">Support</div>
+                                        </div>
+
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical metal">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:70%">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mediatitle">Metal</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <div class="container-fluid">
+                            <div>
+
+                                <button class="btn btn-sm btn-primary "><i class="fa fa-eye"></i> Hide
+                                </button>
+
+
+                                <button class="btn btn-sm btn-danger "><i class="fa fa-trash"></i>
+                                    Remove
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="editPrinter();"><i
+                                        class="fa fa-pencil"></i> Edit
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveLeft();"><i
+                                        class="fa fa-caret-left"></i>
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveRight();"><i
+                                        class="fa fa-caret-right"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="printer">
+                        <div class="printerpic"><img src="images/printer4.png"></div>
+                        <div class="printername"><i class="fa fa fa-circle status1 blink"></i> Creator-Man-14</div>
+                        <table class="printerdata table table-bordered">
+                            <tr>
+                                <td>State:</td>
+                                <td>Online</td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td>PreAlpha12</td>
+                            </tr>
+                            <tr>
+                                <td>Connection:</td>
+                                <td>Disconnected</td>
+                            </tr>
+                            <tr>
+                                <td>Alert:</td>
+                                <td>No Alert</td>
+                            </tr>
+                            <tr>
+                                <td>IP:</td>
+                                <td>127.0.0.1</td>
+                            </tr>
+                            <tr>
+                                <td>Port:</td>
+                                <td>456789</td>
+                            </tr>
+                            <tr>
+                                <td>Description:</td>
+                                <td>Left Corner</td>
+                            </tr>
+                            <tr>
+                                <td>Build Size:</td>
+                                <td>3365</td>
+                            </tr>
+                            <tr>
+                                <td>Ink Types:</td>
+                                <td>Stainless Steel 1078</td>
+                            </tr>
+                            <tr>
+                                <td>Media Levels:</td>
+                                <td>
+                                    <div>
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical support">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="40"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:40%">
+                                                    40%
+                                                </div>
+                                            </div>
+                                            <div class="mediatitle">Support</div>
+                                        </div>
+
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical metal">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:70%">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mediatitle">Metal</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <div class="container-fluid">
+                            <div>
+
+                                <button class="btn btn-sm btn-primary "><i class="fa fa-eye"></i> Hide
+                                </button>
+
+
+                                <button class="btn btn-sm btn-danger "><i class="fa fa-trash"></i>
+                                    Remove
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="editPrinter();"><i
+                                        class="fa fa-pencil"></i> Edit
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveLeft();"><i
+                                        class="fa fa-caret-left"></i>
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveRight();"><i
+                                        class="fa fa-caret-right"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="printer">
+                        <div class="printerpic"><img src="images/printer4.png"></div>
+                        <div class="printername"><i class="fa fa fa-circle status3 blink"></i> EnergyBar-44</div>
+                        <table class="printerdata table table-bordered">
+                            <tr>
+                                <td>State:</td>
+                                <td>Online</td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td>PreAlpha12</td>
+                            </tr>
+                            <tr>
+                                <td>Connection:</td>
+                                <td>Disconnected</td>
+                            </tr>
+                            <tr>
+                                <td>Alert:</td>
+                                <td>No Alert</td>
+                            </tr>
+                            <tr>
+                                <td>IP:</td>
+                                <td>127.0.0.1</td>
+                            </tr>
+                            <tr>
+                                <td>Port:</td>
+                                <td>456789</td>
+                            </tr>
+                            <tr>
+                                <td>Description:</td>
+                                <td>Left Corner</td>
+                            </tr>
+                            <tr>
+                                <td>Build Size:</td>
+                                <td>3365</td>
+                            </tr>
+                            <tr>
+                                <td>Ink Types:</td>
+                                <td>Stainless Steel 1078</td>
+                            </tr>
+                            <tr>
+                                <td>Media Levels:</td>
+                                <td>
+                                    <div>
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical support">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="40"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:40%">
+                                                    40%
+                                                </div>
+                                            </div>
+                                            <div class="mediatitle">Support</div>
+                                        </div>
+
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical metal">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:70%">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mediatitle">Metal</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <div class="container-fluid">
+                            <div>
+
+                                <button class="btn btn-sm btn-primary "><i class="fa fa-eye"></i> Hide
+                                </button>
+
+
+                                <button class="btn btn-sm btn-danger "><i class="fa fa-trash"></i>
+                                    Remove
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="editPrinter();"><i
+                                        class="fa fa-pencil"></i> Edit
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveLeft();"><i
+                                        class="fa fa-caret-left"></i>
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveRight();"><i
+                                        class="fa fa-caret-right"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="printer">
+                        <div class="printerpic"><img src="images/printer4.png"></div>
+                        <div class="printername"><i class="fa fa fa-circle status1"></i> Reform-Magic</div>
+                        <table class="printerdata table table-bordered">
+                            <tr>
+                                <td>State:</td>
+                                <td>Online</td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td>PreAlpha12</td>
+                            </tr>
+                            <tr>
+                                <td>Connection:</td>
+                                <td>Disconnected</td>
+                            </tr>
+                            <tr>
+                                <td>Alert:</td>
+                                <td>No Alert</td>
+                            </tr>
+                            <tr>
+                                <td>IP:</td>
+                                <td>127.0.0.1</td>
+                            </tr>
+                            <tr>
+                                <td>Port:</td>
+                                <td>456789</td>
+                            </tr>
+                            <tr>
+                                <td>Description:</td>
+                                <td>Left Corner</td>
+                            </tr>
+                            <tr>
+                                <td>Build Size:</td>
+                                <td>3365</td>
+                            </tr>
+                            <tr>
+                                <td>Ink Types:</td>
+                                <td>Stainless Steel 1078</td>
+                            </tr>
+                            <tr>
+                                <td>Media Levels:</td>
+                                <td>
+                                    <div>
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical support">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="40"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:40%">
+                                                    40%
+                                                </div>
+                                            </div>
+                                            <div class="mediatitle">Support</div>
+                                        </div>
+
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical metal">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:70%">
+                                                    70%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mediatitle">Metal</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <div class="container-fluid">
+                            <div>
+
+                                <button class="btn btn-sm btn-primary "><i class="fa fa-eye"></i> Hide
+                                </button>
+
+
+                                <button class="btn btn-sm btn-danger "><i class="fa fa-trash"></i>
+                                    Remove
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="editPrinter();"><i
+                                        class="fa fa-pencil"></i> Edit
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveLeft();"><i
+                                        class="fa fa-caret-left"></i>
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveRight();"><i
+                                        class="fa fa-caret-right"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="printer">
+                        <div class="printerpic"><img src="images/printer4.png"></div>
+                        <div class="printername"><i class="fa fa fa-circle status4"></i> Barking Boy-17</div>
+                        <table class="printerdata table table-bordered">
+                            <tr>
+                                <td>State:</td>
+                                <td>Online</td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td>PreAlpha 03</td>
+                            </tr>
+                            <tr>
+                                <td>Connection:</td>
+                                <td>Disconnected</td>
+                            </tr>
+                            <tr>
+                                <td>Alert:</td>
+                                <td>No Alert</td>
+                            </tr>
+                            <tr>
+                                <td>IP:</td>
+                                <td>127.0.0.1</td>
+                            </tr>
+                            <tr>
+                                <td>Port:</td>
+                                <td>456789</td>
+                            </tr>
+                            <tr>
+                                <td>Description:</td>
+                                <td>Left Corner</td>
+                            </tr>
+                            <tr>
+                                <td>Build Size:</td>
+                                <td>3365</td>
+                            </tr>
+                            <tr>
+                                <td>Ink Types:</td>
+                                <td>Stainless Steel 1078</td>
+                            </tr>
+                            <tr>
+                                <td>Media Levels:</td>
+                                <td>
+                                    <div>
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical support">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:60%">
+                                                    60%
+                                                </div>
+                                            </div>
+                                            <div class="mediatitle">Support</div>
+                                        </div>
+
+                                        <div class="col-sm-6 text-center">
+                                            <div class="progress progress-bar-vertical metal">
+                                                <div class="progress-bar" role="progressbar" aria-valuenow="80"
+                                                     aria-valuemin="0" aria-valuemax="100" style="height:80%">
+                                                    80%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mediatitle">Metal</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="container-fluid">
+                            <div>
+
+                                <button class="btn btn-sm btn-primary "><i class="fa fa-eye"></i> Hide
+                                </button>
+
+
+                                <button class="btn btn-sm btn-danger "><i class="fa fa-trash"></i>
+                                    Remove
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="editPrinter();"><i
+                                        class="fa fa-pencil"></i> Edit
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveLeft();"><i
+                                        class="fa fa-caret-left"></i>
+                                </button>
+
+
+                                <button class="btn btn-sm btn-info " onclick="moveRight();"><i
+                                        class="fa fa-caret-right"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="printer newprinter">
+                        <h2> Add new printer </h2>
+                        <i class="fa fa-plus"></i>
+                        <div class="buttons">
+                            <button class="btn btn-block btn-info" onclick="editPrinter()">Add Printer to Builder
+                                station
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Main Section-->
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">XJET All Rights Reserved (c)2017.</p>
+    </div>
+</footer>
+
+<!--Connect Server Modal-->
+<div class="modal fade" tabindex="-1" role="dialog" id="connectserver">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="connecttitle">Connect to Server</h4>
+            </div>
+            <div class="modal-body">
+                <h3>Connect Builder Station to Server</h3>
+                <form>
+                    <div class="form-group">
+                        <label class="control-label" for="servername">Server Name:</label>
+                        <input type="text" class="form-control" id="servername"
+                               placeholder="Name the server to connect"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="serverip">Server IP Address:</label>
+                        <input type="text" class="form-control" id="serverip"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="serverport">Server Port:</label>
+                        <input type="text" class="form-control" id="serverport"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-info" onclick="goLogin($('#adminpass').val())">Connect Server
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!--Login Dialog-->
+<div class="modal fade" tabindex="-1" role="dialog" id="logindialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="logintitle">Login</h4>
+            </div>
+            <div class="modal-body">
+                <h3>Please log into Builder App</h3>
+                <form>
+                    <div class="form-group">
+                        <label class="control-label" for="adminname">User Name</label>
+                        <input type="text" class="form-control" id="adminname"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="adminpass">User Password</label>
+                        <input type="password" class="form-control" id="adminpass"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-info" onclick="goLogin($('#adminpass').val())">Login</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!--Edit Printer Modal Dialog-->
+<div class="modal fade" tabindex="-1" role="dialog" id="editprintermodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="editprintertitle">Edit Printer Information</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="control-label" for="printername">Printer Name</label>
+                        <input type="text" class="form-control" id="printername"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="printerip">IP Address</label>
+                        <input type="text" class="form-control" id="printerip"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="printerport">Port</label>
+                        <input type="text" class="form-control" id="printerport"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="printerdescription">Description</label>
+                        <input type="text" class="form-control" id="printerdescription"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<!--Resend Job-->
+<div class="modal fade" tabindex="-1" role="dialog" id="resendmodal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="rerouttitle">Resend Print Job</h4>
+            </div>
+            <div class="modal-body">
+                <h3>Resend job: Alfred 7888</h3>
+                <div class="container-fluid">
+                    <form>
+                        <div class="col-sm-2"><p style="margin-top: 10px;">Send job to:</p></div>
+                        <div class="col-sm-5"><select class="form-control">
+                            <option disabled selected>Select Printer</option>
+                            <option>Printer #1</option>
+                            <option>Printer #7</option>
+                        </select></div>
+                        <div class="col-sm-5"><select class="form-control">
+                            <option disabled selected>Select position in queue</option>
+                            <option>Next Job to print</option>
+                            <option>At end of queue</option>
+                        </select></div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!--Printer info-->
+<div class="modal fade" tabindex="-1" role="dialog" id="printerinfo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="printerinfotitle">Printer Info</h4>
+            </div>
+            <div class="modal-body">
+                <div class="printer printer-info">
+                    <div class="printerpic"><img src="images/printer4.png"></div>
+                    <div class="printername"><i class="fa fa fa-check-circle online"></i> Freedom 6</div>
+                    <table class="printerdata table table-bordered">
+                        <tr>
+                            <td>State:</td>
+                            <td>Online</td>
+                        </tr>
+                        <tr>
+                            <td>Type:</td>
+                            <td>PreAlpha12</td>
+                        </tr>
+                        <tr>
+                            <td>Connection:</td>
+                            <td>Disconnected</td>
+                        </tr>
+                        <tr>
+                            <td>Alert:</td>
+                            <td>No Alert</td>
+                        </tr>
+                        <tr>
+                            <td>IP:</td>
+                            <td>127.0.0.1</td>
+                        </tr>
+                        <tr>
+                            <td>Port:</td>
+                            <td>456789</td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td>Left Corner</td>
+                        </tr>
+                        <tr>
+                            <td>Build Size:</td>
+                            <td>3365</td>
+                        </tr>
+                        <tr>
+                            <td>Ink Types:</td>
+                            <td>Stainless Steel 1078</td>
+                        </tr>
+                        <tr>
+                            <td>Media Levels:</td>
+                            <td>
+                                <div>
+                                    <div class="col-sm-6 text-center">
+                                        <div class="progress progress-bar-vertical support">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="40"
+                                                 aria-valuemin="0" aria-valuemax="100" style="height:40%">
+                                                40%
+                                            </div>
+                                        </div>
+                                        <div class="mediatitle">Support</div>
+                                    </div>
+
+                                    <div class="col-sm-6 text-center">
+                                        <div class="progress progress-bar-vertical metal">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                 aria-valuemin="0" aria-valuemax="100" style="height:70%">
+                                                70%
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mediatitle">Metal</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!--Info Dialog-->
+<div class="modal fade" tabindex="-1" role="dialog" id="infodialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="infodialogtitle">About</h4>
+            </div>
+            <div class="modal-body">
+                <div><img src="images/xjet-logo.svg"></div>
+                <h3>System Info</h3>
+                <table class="printerdata table table-bordered">
+                    <tr>
+                        <td>Build Engine - Version:</td>
+                        <td>3.55</td>
+                    </tr>
+                    <tr>
+                        <td>Build Engine - Build Date & Time:</td>
+                        <td>14 May 2016 10:30AM</td>
+                    </tr>
+                    <tr>
+                        <td>Build Engine Client - Version:</td>
+                        <td>1089</td>
+                    </tr>
+                    <tr>
+                        <td>Build Engine Client - Build Date & Time:</td>
+                        <td>05 Jan 2016 08:30AM</td>
+                    </tr>
+
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+</div>
+<script src="js/jquery-2.2.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/moment-with-locales.js"></script>
+<script src="js/bootstrap-table.min.js"></script>
+<script src="js/builderscripts.js"></script>
+
+
+</body>
+</html>

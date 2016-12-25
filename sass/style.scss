@@ -1,0 +1,413 @@
+/* Color variables*/
+$color-red: #F44336;
+$color-green: #7ED321;
+$color-orange: #F5A623;
+$color-blue: #2196F3;
+$color-darkgray: #212121;
+$color-medgray: #424242;
+$color-lighter: #9E9E9E;
+$color-lightgray: #E0E0E0;
+$color-verylightgray: #FAFAFA;
+/* height variables*/
+$height-topbar: 60px;
+$height-footer: 24px;
+$height-queue: 220px;
+$height-jhistory: 220px;
+
+/*General Layout*/
+
+html {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  padding-top: 70px;
+  background-color: #1a1a1a;
+  margin-bottom: $height-footer;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: $height-footer;
+  background-color: #f5f5f5;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none;
+  /* non-prefixed version, currently
+                         not supported by any browser */
+}
+
+.navbar-default {
+  background-color: $color-darkgray;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+/*Top Bar styles*/
+.navbar-header {
+  padding-top: 8px;
+  width: 100%;
+  .logoimage {
+    height: 40px;
+  }
+}
+
+.appname {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 20px;
+  vertical-align: bottom;
+  margin-left: 20px;
+}
+
+.topright {
+  text-align: right;
+  height: 56px;
+  line-height: 56px;
+  vertical-align: middle;
+  font-size: 20px;
+  color: #FFFFFF;
+
+}
+
+.topright .btn-sm {
+  font-size: 20px;
+  padding: 0 9px;
+}
+
+#thedate {
+  color: #ccc;
+  margin: 0 20px;
+}
+
+/*Tab styling*/
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: $color-orange;
+}
+
+.tab-content {
+  position: relative;
+  .tab-pane {
+    background-color: $color-darkgray;
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+/*Printerbox styling*/
+.printerbox {
+  min-height: 50px;
+  background-color: $color-medgray;
+  margin: 8px 8px;
+  padding: 8px;
+  display: flex;
+  .progress {
+    margin-top: 14px;
+    margin-bottom: 2px;
+
+  }
+  .progress.support .progress-bar {
+    background-color: $color-blue;
+  }
+  .progress.metal .progress-bar {
+    background-color: $color-orange;
+  }
+}
+
+.mediatitle {
+  font-weight: 100;
+  font-size: 0.8em;
+  color: $color-lighter;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.lpane {
+  width: 140px;
+  padding: 4px;
+  .printerpic {
+    text-align: center;
+  }
+
+  .connection {
+    margin-top: 4px;
+    .btn:first-child {
+      min-width: 100px;
+    }
+  }
+}
+
+.printername {
+  line-height: 22px;
+  vertical-align: middle;
+  i {
+    font-size: 28px;
+    vertical-align: middle;
+  }
+  i.status1 {
+    color: $color-green;
+  }
+  i.status2 {
+    color: $color-orange;
+  }
+  i.status3 {
+    color: $color-red;
+  }
+  i.status4 {
+    color: $color-lighter;
+  }
+  i.blink {
+    animation: blinker 1.7s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+  }
+  @keyframes blinker {
+    to {
+      opacity: 0;
+    }
+  }
+}
+
+.rpane {
+  flex: 1 auto;
+  .printertitle {
+    color: $color-orange;
+  }
+  .nowprinting {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 6px;
+    .progress {
+      margin: 0px;
+      width: 100px;
+      height: 16px;
+      .progress-bar {
+        padding: 2px;
+        background-color: $color-orange;
+      }
+    }
+  }
+  .nowprinting .btn {
+    padding: 3px 6px;
+  }
+  .nowprinting td {
+    text-align: center;
+    color: $color-lighter;
+    font-weight: 100;
+    font-size: 0.8em;
+    padding: 0 6px;
+    vertical-align: top;
+
+  }
+  .nowprinting th {
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1em;
+    padding: 0 6px;
+    border-bottom: 1px solid $color-lighter;
+  }
+  .nowprinting th:last-child {
+    border: none;
+  }
+  .queuetitle, .jhistorytitle {
+    margin-top: 4px;
+    border-top: 1px solid $color-darkgray;
+    a {
+      color: $color-orange;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+  .queue {
+    max-height: $height-queue;
+    overflow: auto;
+  }
+}
+
+.jhistory {
+  max-height: $height-jhistory;
+  overflow: auto;
+  display: none;
+}
+
+.allhistory {
+  display: block;
+  overflow: visible;
+  max-height: none;
+}
+
+.allhistory .highlight {
+  color: $color-orange;
+}
+
+.allhistory tr.hide {
+  display: table-row;
+}
+
+.filter {
+  padding: 8px;
+  text-align: center;
+  .clearfield {
+    color: $color-darkgray;
+    cursor: pointer;
+    pointer-events: all;
+  }
+}
+
+.filter #box {
+  border-radius: 20px;
+}
+
+.mover {
+  width: 20px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.mover:before {
+  font-family: 'FontAwesome';
+  content: "\f0dd";
+  color: $color-orange;
+  font-size: 0.8em;
+  position: absolute;
+  left: 1px;
+  bottom: -10px;
+}
+
+.mover:after {
+  font-family: 'FontAwesome';
+  content: "\f0de";
+  color: $color-orange;
+  font-size: 0.8em;
+  position: absolute;
+  left: 1px;
+  top: -7px;
+}
+
+.queue-remove {
+  font-size: 1.2em;
+}
+
+.queue-resend {
+  font-size: 1.2em;
+}
+
+.progress-bar-vertical {
+  width: 32px;
+  min-height: 80px;
+  display: flex;
+  align-items: flex-end;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.progress-bar-vertical .progress-bar {
+  width: 100%;
+  height: 0;
+  -webkit-transition: height 0.6s ease;
+  -o-transition: height 0.6s ease;
+  transition: height 0.6s ease;
+}
+
+.queue table, .jhistory table {
+  tr {
+    background-color: lighten($color-medgray, 5%);
+  }
+  tr:nth-of-type(odd) {
+    background-color: lighten($color-medgray, 10%);
+  }
+  th {
+    background-color: $color-lighter;
+    color: black;
+  }
+  .btn {
+    padding: 2px 6px;
+  }
+}
+
+/*Printer management*/
+.printerbin {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: $color-darkgray;
+  .printer {
+    text-align: center;
+  }
+  .newprinter {
+    text-align: center;
+    i {
+      font-size: 120px;
+      color: $color-lighter;
+    }
+    .buttons {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      width: calc(100% - 16px);
+    }
+  }
+}
+
+.printer {
+  position: relative;
+  border: 1px solid #fff;
+  background-color: $color-medgray;
+  min-height: 500px;
+  width: 340px;
+  min-width: 340px;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  .printerpic {
+    text-align: center;
+  }
+
+}
+
+.printer-info {
+  margin: 0 auto 0 auto;
+}
+
+table.printerdata {
+  width: 100%;
+  tbody > tr > td {
+    padding: 3px;
+  }
+  td:first-child {
+    color: $color-verylightgray;
+    font-weight: bold;
+    text-align: right;
+  }
+  td:last-child {
+    color: $color-lighter;
+    font-weight: normal;
+    text-align: left;
+  }
+  .progress {
+    margin-bottom: 0px;
+  }
+  .progress.support .progress-bar {
+    background-color: $color-blue;
+  }
+  .progress.metal .progress-bar {
+    background-color: $color-orange;
+  }
+}
+
+
+
+
